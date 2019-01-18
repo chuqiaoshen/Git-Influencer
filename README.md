@@ -10,7 +10,6 @@ I want to creat a data platform which can help you on this.
 ## Tech Stack 
 * Data Ingestion
 Data stored in Bigquery, it will be cleaned with bigquery and clean data will be stored in Amazon S3
-![clean](https://raw.githubusercontent.com/Catherinesdataanalytics/LearnFromBest/blob/master/pics/bigquery.png)
 
 * Data Processing 
 algorithms TBD, will start from the most easy one.
@@ -20,8 +19,11 @@ Cassandra
 
 * User Interface 
 Flask
-![stack](https://raw.githubusercontent.com/Catherinesdataanalytics/LearnFromBest/tree/master/pics/flow.png)
 
+## Engineering challenge
+* cleaning, find the right field 
+* about the algo and query need to use.
+* 80~100 G per month, and update every 1 hour in bigquery.
 
 ## Business Value
 If you want to learn "Golang", this platform will tell you the most valueble people and repo to follow and learn from.
@@ -31,4 +33,4 @@ Show the 10 best repo(based on some criteria like update frequency) or show the 
 * Github archive : which stores all the eventbased github data every hour.
 * 80~100G/month since 2012
 
-## 
+
