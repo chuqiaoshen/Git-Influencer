@@ -34,6 +34,6 @@ If you want to learn "Golang", this platform will tell you the most valueble peo
 Show the 10 best repo(based on some criteria like update frequency) or show the 10 people to learn from. 
 
 ## MVP
-data clean part
-easiset part
-S3 ->spark batch-> Cassandra
+* data clean part
+* easiset part
+* S3 ->spark batch-> Cassandra
