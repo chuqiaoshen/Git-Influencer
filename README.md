@@ -4,7 +4,7 @@ A platform for you to make most of the github by following the right person and 
 ## Project Idea
 Github is the most open source community in tech world. We share code, idea and publish new update with others.
 Github is also one of the best sources for learning coding, but it do not have a system to help you find the right person and resources on specific area.
-I want to creat a data platform which can help you on this.
+* Everyone want to learn from the best, I want to creat a data platform which can help you on this.
 
 ## Data Source
 * Github archive : which stores all the eventbased github data every hour.
