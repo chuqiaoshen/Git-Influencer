@@ -15,7 +15,7 @@ Github is also one of the best sources for learning coding, but it do not have a
 Data stored in Bigquery, it will be cleaned with bigquery and clean data will be stored in Amazon S3
 
 * Data Processing 
-algorithms TBD, will start from the most easy one.
+spark, algorithms TBD, will start from the most easy one.
 
 * Database
 Cassandra
