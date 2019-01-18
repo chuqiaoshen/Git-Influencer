@@ -26,7 +26,7 @@ Flask
 ## Engineering challenge
 * cleaning, find the right field 
 * about the algo and query need to use.
-* 80~100 G per month, and update every 1 hour in bigquery.
+* 80~100 G per month, and update every 1 hour in bigquery. need airflow auto or now.
 
 
 ## Business Value
