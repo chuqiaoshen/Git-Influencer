@@ -1,5 +1,5 @@
 # LearnFromBest
-A platform for you to make most of the github by following the right person and reop.
+A platform for you to make most of the github by following the right person and reop regarding to your interest.
 
 ## Project Idea
 Github is the most open source community in tech world. We share code, idea and publish new update with others.
