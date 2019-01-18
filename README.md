@@ -10,7 +10,7 @@ I want to creat a data platform which can help you on this.
 ## Tech Stack 
 * Data Ingestion
 Data stored in Bigquery, it will be cleaned with bigquery and clean data will be stored in Amazon S3
-![stack](\\https://github.com/Catherinesdataanalytics/LearnFromBest/pics/bigquery.png)
+![clean](https://github.com/Catherinesdataanalytics/LearnFromBest/pics/bigquery.png)
 
 * Data Processing 
 algorithms TBD, will start from the most easy one.
@@ -20,7 +20,7 @@ Cassandra
 
 * User Interface 
 Flask
-![stack](\\https://github.com/Catherinesdataanalytics/LearnFromBest/pics/flow.png)
+![stack](https://github.com/Catherinesdataanalytics/LearnFromBest/pics/flow.png)
 
 
 ## Business Value
