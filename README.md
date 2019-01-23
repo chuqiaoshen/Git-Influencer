@@ -15,7 +15,7 @@ Github is also one of the best sources for learning coding, but it do not have a
 Data stored in Bigquery, it will be cleaned with bigquery and clean data will be stored in Amazon S3
 
 * Data Processing 
-spark, algorithms TBD, will start from the most easy one.
+spark, algorithms(PageRank), will start from the most easy one.
 
 * Database
 Cassandra
@@ -25,7 +25,6 @@ Flask
 
 ## Engineering challenge
 * cleaning, find the right field 
-* about the algo and query need to use.
 * 80~100 G per month, and update every 1 hour in bigquery. need airflow auto or now.
 
 
