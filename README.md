@@ -26,7 +26,9 @@ Flask
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/techFlow_Diagram.png)
 
 ## Alogorithms
-Pagerank and other network analysis algorithms.
+Pagerank(Centrality Measures) and other network analysis algorithms.
+![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/algorithm.png)
+
 
 ## Engineering challenge
 * Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
