@@ -22,7 +22,7 @@ Cassandra
 
 * User Interface 
 Flask
-![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/to/techFlowDiagram.png)
+![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/techFlow_Diagram.png)
 
 ## Engineering challenge
 * cleaning, find the right field 
