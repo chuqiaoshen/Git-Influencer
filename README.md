@@ -22,18 +22,24 @@ Cassandra
 
 * User Interface 
 Flask
+
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/techFlow_Diagram.png)
 
+## Alogorithms
+Pagerank and other network analysis algorithms.
+
 ## Engineering challenge
-* cleaning, find the right field 
-* 80~100 G per month, and update every 1 hour in bigquery. need airflow auto or now.
+* Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
+* 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing.
 
 
 ## Business Value
-If you want to learn "Golang", this platform will tell you the most valueble people and repo to follow and learn from.
-Show the 10 best repo(based on some criteria like update frequency) or show the 10 people to learn from. 
+If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
+Show the show the 10 people to learn from or 10 best repo(based on some criteria like start and contribute fork).
 
 ## MVP
-* data clean part
-* easiset part
-* S3 ->spark batch-> Cassandra
+* data clean part - done with bigquery
+* move data from Google storage to AWS S3
+* S3 ->spark batch
+* spark -> DB: TBD
+* other analysis algo
