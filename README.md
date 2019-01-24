@@ -23,7 +23,7 @@ Cassandra
 * User Interface 
 Flask
 
-![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/techFlow_Diagram.png)
+![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V1.png)
 
 ## Engineering challenge
 * Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
