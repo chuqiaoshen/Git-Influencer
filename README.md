@@ -25,14 +25,13 @@ Flask
 
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/techFlow_Diagram.png)
 
-## Alogorithms
-Pagerank(Centrality Measures) and other network analysis algorithms.
-![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/algorithms.png)
-
-
 ## Engineering challenge
 * Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
 * 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing.
+
+## Alogorithms
+Pagerank(Centrality Measures) and other network analysis algorithms.
+![algorithms](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/algorithm.png)
 
 
 ## Business Value
