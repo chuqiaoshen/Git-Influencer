@@ -27,7 +27,7 @@ Flask
 
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
-![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/algorithm.png)
+![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/algorithms.png)
 
 
 ## Engineering challenge
