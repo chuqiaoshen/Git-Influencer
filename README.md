@@ -20,7 +20,7 @@ Data cleaning: using AWS lambda which only clean the updated new coming data.
 spark, algorithms(PageRank), will start from the most easy one.
 
 * Database
-Mysql, with 9 table corresponding to 9 languages.
+Mysql, with 9 table corresponding to 9 languages. My be used for join later.
 
 * User Interface 
 Flask, user can select the language and they will get recommended users ranking by the social influencer score.
@@ -30,19 +30,19 @@ Flask, user can select the language and they will get recommended users ranking 
 ## Engineering challenge
 * Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
 * 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing.
-* lambda
+* lambda 
 * mysql connect
 * read from S3 using spark session 
 * scala and graphX
-* work on mapping user with languages
+* work on mapping user with languages from event data
 
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
-* Will move to scala with graphX soon.
+* Will move to scala with graphX and more analysis soon.
 
 ## Business Value
 If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
 Show the show the 10 people to learn from or 10 best repo(based on some criteria like start and contribute fork).
 
 ## MVP
-* show sample result.
+* show sample result of the github user.
