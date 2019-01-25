@@ -34,6 +34,7 @@ Flask, user can select the language and they will get recommended users ranking 
 * mysql connect
 * read from S3 using spark session 
 * scala and graphX
+* work on mapping user with languages
 
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
