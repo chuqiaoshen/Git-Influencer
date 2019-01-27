@@ -42,8 +42,8 @@ Github is also one of the best sources for learning coding, we share code, publi
 
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
-* GraphX and more analysis soon.
 <img src="https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/SparkGraphx_Diagram.png " width="550">
+* GraphX and more analysis soon.
 
 ## Business Value
 If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
