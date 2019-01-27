@@ -2,48 +2,51 @@
 A platform for you to make most of the github by following the right person regarding to your interest.
 
 ## Project Idea
-Github is the most open source community in tech world. We share code, idea and publish new update with others.
-Github is also one of the best sources for learning coding, but it do not have a system to help you find the right person and resources on specific area.
-* Everyone want to learn from the best, I want to creat a data platform which can help you on this.
+Started from 2008, Github is now one of the most popular open source community in tech world. As of 2018, there are 28 million users and 57 million repositories, making it the largest host of source code in the world. 
+
+Github is also one of the best sources for learning coding, we share code, publish new project, follow and learn from other users. But github do not have a system to help you find the right person and resources on specific area.
+
+**Everyone wants to learn from the best, this project aims to creat a platform which can help you on finding the social influencer from the github network.**
 
 ## Data Source
-* Github archive : which stores all the eventbased github data more than 3 TB.
-* 80~100G/month since 2012
-* Update every 1 hour
+* [Github archive](https://www.gharchive.org/) : GH Archive is a project to record the public GitHub timeline, which stores all the event based github.
+* Data size: 80~100G/month since 2011
+* Update frenquency: Update every 1 hour
 
 ## Tech Stack 
-* Data Ingestion
-Data stored in Bigquery, it will be cleaned with bigquery and clean data will be stored in Amazon S3
-Data cleaning: using AWS lambda which only clean the updated new coming data.
-
-* Data Processing 
-spark, algorithms(PageRank), will start from the most easy one.
-
-* Database
-Mysql, with 9 table corresponding to 9 languages. My be used for join later.
-
-* User Interface 
-Flask, user can select the language and they will get recommended users ranking by the social influencer score.
 
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V1.png)
 
+1. Data Ingestion
+   - Raw data stored in Bigquery, it will be cleaned with bigquery and will be transferred to AWS S3 bucket.
+   - New coming data cleaning: use AWS lambda to clean the updated new coming data and append to historical data in HDFS.
+   - HDFS: considering about the benefit for combining spark and HDFS, data will be stored to HDFS for data processing.
+
+2. Data Processing 
+   - use spark for batch processing
+   - algorithms(PageRank) in scala
+   - other network analysis algorithms in graphX (TBD)
+
+3. Database 
+   - Mysql, with 9 table corresponding to 9 languages. May be used for join later.
+
+4. User Interface 
+   - Flask, user can select the language and they will get recommended users ranking by the social influencer score.
+
 ## Engineering challenge
-* Processing and cleaning 2.9TB github event data in json format, slice and find the right field 
-* 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing.
-* lambda 
-* mysql connect
-* read from S3 using spark session 
+* Data modeling: work on mapping user with languages from event data
+* Processing and cleaning 2.9TB github event data in json format, slice and find the right field. - lambda 
+* 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing. - airflow
+* mysql connect and read from S3 using spark session 
 * scala and graphX
-* work on mapping user with languages from event data
-* join and more discovering
 
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
-* Will move to scala with graphX and more analysis soon.
+* GraphX and more analysis soon.
 
 ## Business Value
 If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
-Show the show the 10 people to learn from or 10 best repo(based on some criteria like start and contribute fork).
+Show the 10 or N people to learn from based on network analysis result.
 
 ## MVP
-* show sample result of the github user.
+* show sample result of the github user. User list which has a high pagerank score.
