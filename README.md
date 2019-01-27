@@ -43,7 +43,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 ## Alogorithms
 Pagerank(Centrality Measures) and other network analysis algorithms.
 * GraphX and more analysis soon.
-![Algorithms](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/SparkGraphx_Diagram.png)
+![Algorithms](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/SparkGraphx_Diagram.png =300x100)
 
 
 ## Business Value
