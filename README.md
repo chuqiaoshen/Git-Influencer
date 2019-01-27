@@ -23,8 +23,8 @@ Github is also one of the best sources for learning coding, we share code, publi
    - HDFS: considering about the benefit for combining spark and HDFS, data will be stored to HDFS for data processing.
 
 * **Data Processing** 
-   - use spark for batch processing
-   - algorithms(PageRank) in scala
+   - use spark for batch processing data on HDFS
+   - algorithms(PageRank) written in scala 
    - other network analysis algorithms in graphX (TBD)
 
 * **Database** 
