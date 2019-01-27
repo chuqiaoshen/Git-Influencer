@@ -15,7 +15,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 
 ## Tech Stack 
 
-![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V1.png)
+![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V2.png)
 
 * **Data Ingestion**
    - Raw data stored in Bigquery, it will be cleaned with bigquery and will be transferred to AWS S3 bucket.
