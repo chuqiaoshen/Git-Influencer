@@ -17,20 +17,20 @@ Github is also one of the best sources for learning coding, we share code, publi
 
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V1.png)
 
-1. Data Ingestion
+* Data Ingestion
    - Raw data stored in Bigquery, it will be cleaned with bigquery and will be transferred to AWS S3 bucket.
    - New coming data cleaning: use AWS lambda to clean the updated new coming data and append to historical data in HDFS.
    - HDFS: considering about the benefit for combining spark and HDFS, data will be stored to HDFS for data processing.
 
-2. Data Processing 
+* Data Processing 
    - use spark for batch processing
    - algorithms(PageRank) in scala
    - other network analysis algorithms in graphX (TBD)
 
-3. Database 
+* Database 
    - Mysql, with 9 table corresponding to 9 languages. May be used for join later.
 
-4. User Interface 
+* User Interface 
    - Flask, user can select the language and they will get recommended users ranking by the social influencer score.
 
 ## Engineering challenge
