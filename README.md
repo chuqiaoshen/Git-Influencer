@@ -9,7 +9,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 **Everyone wants to learn from the best, this project aims to creat a platform which can help you on finding the social influencer from the github network.**
 
 ## Data Source
-* [Github archive](https://www.gharchive.org/) : GH Archive is a project to record the public GitHub timeline, which stores all the event based github.
+* [Github archive](https://www.gharchive.org/) : GH Archive is a project to record the public GitHub timeline, which stores all the event based github. Weighing in over **3TB** total, this is the largest Bigquery dataset available on kaggle.
 * Data size: 80~100G/month since 2011
 * Update frenquency: Update every 1 hour
 
@@ -18,9 +18,9 @@ Github is also one of the best sources for learning coding, we share code, publi
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V2.png)
 
 * **Data Ingestion**
-   - Raw data stored in Bigquery, it will be cleaned with bigquery and will be transferred to AWS S3 bucket.
-   - New coming data cleaning: use AWS lambda to clean the updated new coming data and append to historical data in HDFS.
-   - HDFS: considering about the benefit for combining spark and HDFS, data will be stored to HDFS for data processing.
+   - Raw data stored in Bigquery, it will be cleaned with bigquery and will be transferred to HDFS.
+   - New coming data cleaning: use bigquery api and airflow scheduler to clean the updated new coming data and append to historical data in HDFS.
+   - HDFS: All data will be stored to HDFS for data processing in spark.
 
 * **Data Processing** 
    - use spark for batch processing data on HDFS
