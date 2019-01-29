@@ -1,6 +1,7 @@
 """
 Catherine Shen 20190124
 PageRank implement by pyspark (sparksession version)
+Input Format: csv with a,b in each line
 Run:
 python PageRank.py filename.csv numberforiteration
 """
@@ -38,7 +39,7 @@ def parseNeighborFollowers(followers):
 
 
     """
-    parts = re.split(r'\s+', followers)
+    parts = re.split(r'\,', followers)
     return parts[0], parts[1]
 
 
