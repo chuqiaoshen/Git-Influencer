@@ -41,13 +41,22 @@ Github is also one of the best sources for learning coding, we share code, publi
 * scala and graphX
 
 ## Alogorithms
-Pagerank(Centrality Measures) and other network analysis algorithms.
-<img src="https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/graphSpark.png " width="550">
+* Centrality Measures: Pagerank in Scala
+* Community Detection: Strongly Connected Components
 * GraphX and more analysis soon.
+<img src="https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/graphSpark.png " width="550">
 
 ## Business Value
-If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
-Show the 10 or N people to learn from based on network analysis result.
+1. If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
+2. For example, Show the 10 or N people to learn from based on network analysis result.
+Recommend community for colaboration.
 
-## MVP
+## Temporal output
 * show sample result of the github user. User list which has a high pagerank score.
+* show the pagerank score which are defined by the user language.
+
+## Further Questions
+* Is it a good way to make most of bigquery API and make input data small, will this reduce the depth of spark?
+* The way to make the whole process real time
+* make data clean for deleted user and delete no following users
+* move to scala, test structure in scala 
