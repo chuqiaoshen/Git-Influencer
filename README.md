@@ -1,5 +1,6 @@
 # LearnFromBest
-A platform for you to make most of the github by following the right person regarding to your interest.
+
+A platform for you to make most of the github by discovering social influencers in github network regarding to your interest.
 
 ## Project Idea
 Started from 2008, Github is now one of the most popular open source community in tech world. As of 2018, there are 28 million users and 57 million repositories, making it the largest host of source code in the world. 
