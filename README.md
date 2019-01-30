@@ -42,6 +42,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 
 ## Alogorithms
 * Centrality Measures: Pagerank in Scala
+* only people who used this language before has been included in the pagerank algorithms
 * Community Detection: Strongly Connected Components
 * GraphX and more analysis soon.
 <img src="https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/graphSpark.png " width="550">
@@ -55,27 +56,14 @@ Recommend community for colaboration.
 * show sample result of the github user. User list which has a high pagerank score.
 * show the pagerank score which are defined by the user language.
 
-4.glassesfactory,68.0407463652.
-68,desandro,59.9803118883.
-119,defunkt,59.4355582686.
-53,mojombo,56.4538433468.
-95,GillesHaverbeke,56.4495397138.
-130,visionmedia,51.6731830982.
-40,paulirish,50.9951976587.
-114,zurmo,49.3660697581.
-17,substack,43.313750552.
-67,schacon,37.3535144986.
-94,douglascrockford,36.7314431584.
-60,Marak,34.9735266652.
-51,lokesh,34.834088857.
-6,ry,33.7864270164.
-105,holman,33.5289454831.
-11,jashkenas,32.6160846564.
-49,marijnh,32.4338197749.
-52,jeresig,31.9755856618.
-30,zedshaw,31.7697354151.
-19,trevorturk,30.8578839416.
-9,kennethreitz,30.4337720903.
+- glassesfactory,68.0407463652.
+- desandro,59.9803118883.
+- defunkt,59.4355582686.
+- mojombo,56.4538433468.
+- GillesHaverbeke,56.4495397138.
+- visionmedia,51.6731830982.
+- paulirish,50.9951976587.
+
 
 ## Further Questions
 * Is it a good way to make most of bigquery API and make input data small, will this reduce the depth of spark?
