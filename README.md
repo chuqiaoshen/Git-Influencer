@@ -60,7 +60,6 @@ Recommend community for colaboration.
 - desandro,59.9803118883.
 - defunkt,59.4355582686.
 - mojombo,56.4538433468.
-- GillesHaverbeke,56.4495397138.
 - visionmedia,51.6731830982.
 - paulirish,50.9951976587.
 
