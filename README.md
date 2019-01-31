@@ -66,7 +66,7 @@ Recommend community for colaboration.
 
 
 ## Further Questions
-* Is it a good way to make most of bigquery API and make input data small, will this reduce the depth of spark?
-* The way to make the whole process real time
+* The way to make the whole process real time or not need
+* write test code 
 * make data clean for deleted user and delete no following users
 * move to scala, test structure in scala 
