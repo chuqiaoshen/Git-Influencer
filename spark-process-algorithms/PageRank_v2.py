@@ -13,7 +13,17 @@ import sys
 from operator import add
 
 from pyspark.sql import SparkSession
+from pyspark.sql.types import Row
 
+#here you are going to create a function
+
+#convert rdd to dataframe
+#reference to https://stackoverflow.com/questions/39699107/spark-rdd-to-dataframe-python
+def f(x):
+    d = {}
+    for i in x:
+        d[x[0]] = x[1]
+    return d
 
 def computeContribs(followers, rank):
     """Calculates follower contributions to the rank of other followers.
@@ -72,9 +82,19 @@ if __name__ == "__main__":
         ranks = contribs.reduceByKey(add).mapValues(lambda rank: rank * 0.85 + 0.15)
 
     # Collects all follower ranks and dump them to console.
-    for (link, rank) in ranks.collect():
-        print("%s %s." % (link, rank))
+    #for (link, rank) in ranks.collect():
+        #print("%s %s." % (link, rank))
+        #instead of the print, we store the output into mysql database with schema: username, score
+    df = rdd.map(lambda x: Row(**f(x))).toDF()
+    df.toPandas().to_csv("sample_file.csv", header=True)
+    #get the df stored into db
+    '''
+    df.write.format('jdbc').options(
+    url='jdbc:mysql://localhost/database_name',
+    driver='com.mysql.jdbc.Driver',
+    dbtable='DestinationTableName',
+    user='your_user_name',
+    password='your_password').mode('append').save()'''
+
 
     spark.stop()
-
-
