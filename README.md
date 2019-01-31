@@ -42,7 +42,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 * scala and graphX
 
 ## Alogorithms
-* Centrality Measures: Pagerank in Scala
+* Centrality Measures: Pagerank 
 * only people who used this language before has been included in the pagerank algorithms
 * Community Detection: Strongly Connected Components
 * GraphX and more analysis soon.
