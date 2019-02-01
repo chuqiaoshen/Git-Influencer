@@ -1,4 +1,4 @@
-# LearnFromBest
+# Git-Influencer
 
 A platform for you to make most of the github by discovering social influencers in github network regarding to your interest.
 
