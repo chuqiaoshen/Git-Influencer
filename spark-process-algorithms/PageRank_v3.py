@@ -4,6 +4,7 @@ PageRank implement by pyspark (sparksession version)
 Input Format: csv with a,b in each line
 Run:
 python PageRank.py filename.csv numberforiteration(recommmend 10)
+#this version will write into mysql database
 """
 #import library
 from __future__ import print_function
@@ -12,6 +13,8 @@ import re
 import sys
 from operator import add
 import pandas as pd
+import pymysql.cursors
+import pymysql
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import Row
@@ -85,7 +88,10 @@ if __name__ == "__main__":
     df = pd.DataFrame(ranks.collect(),
               columns=['user','rank'])
     df.to_csv("sample_file3.csv", header=True)
-    #get the df stored into db
+    #get the pandas df stored into db
+    df.to_sql(con=con, name='table_name_for_df', if_exists='replace', flavor='mysql')
+
+    #get the sparkdf stored into db
     '''
     df.write.format('jdbc').options(
     url='jdbc:mysql://localhost/database_name',
