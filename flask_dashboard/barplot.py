@@ -43,7 +43,7 @@ for i in range(len(data)):
 #create graph object
 app.layout = html.Div([dcc.Graph(id='JavaPageRank',
                                  figure = {'data':[go.Bar(
-                                                   x=user_list,  
+                                                   x=user_list,
                                                    y=rank_list
                                                               )],
                                            'layout':go.Layout(
