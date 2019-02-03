@@ -15,9 +15,9 @@ import pymysql.cursors
 app = dash.Dash()
 
 #echo environment variables from instances for mysql login
-mysql_host = os.environ['mysql_host']
-mysql_username = os.environ['mysql_username']
-mysql_password = os.environ['mysql_password']
+mysql_host = os.environ['MYSQL_HOST']
+mysql_username = os.environ['MYSQL_USERNAME']
+mysql_password = os.environ['MYSQL_PASSWORD']
 
 # Get DATA from mysql db
 connection = pymysql.connect(host = mysql_host,
