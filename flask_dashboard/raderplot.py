@@ -28,8 +28,10 @@ connection = pymysql.connect(host = mysql_host,
                              cursorclass = pymysql.cursors.DictCursor)
 
 cursor = connection.cursor()
-#select top 15 users by their pange rank rating
-cursor.execute("SELECT user,rank FROM user_rank ORDER BY rank DESC LIMIT 15")
+
+'''TODO change the data source to the target datasource'''
+#cursor.execute("SELECT user,rank FROM user_rank ORDER BY rank DESC LIMIT 15")
+'''
 data = cursor.fetchall()
 #grab username and userrank from data list
 user_list = []
@@ -39,16 +41,24 @@ for i in range(len(data)):
     user_list.append(data[i]['user'])
     temp_list.append(i)
     rank_list.append(float(data[i]['rank']))
+'''
 
 #create graph object
-app.layout = html.Div([dcc.Graph(id='user_age_rank_bubble_plot',
-                                 figure = {'data':[go.Bar(
-                                                   x=user_list,
-                                                   y=rank_list
-                                                              )],
+app.layout = html.Div([dcc.Graph(id='JavaPageRank',
+                                 figure = {'data':[go.Scatterpolar(
+                                                     r = [user_github_age, user_pagerank_score, user_followers_number],
+                                                     theta = ['Github Age','Page Rank Score','Followers Number'],
+                                                     fill = 'toself'
+                                 )],
                                            'layout':go.Layout(
-                                title='Java User Page Rank Rating top 15',
-                                xaxis = {'title':'User Github Age'})}
+                                                    polar = dict(
+                                                    radialaxis = dict(
+                                                    visible = True,
+                                                    range = [0, 100]
+                                               )
+                                             ),
+                                             showlegend = False
+                                           )}
                                 )])
 
 
