@@ -31,7 +31,7 @@ cursor = connection.cursor()
 #select top 15 users by their pange rank rating
 cursor.execute("SELECT user,rank FROM user_rank ORDER BY rank DESC LIMIT 15")
 data = cursor.fetchall()
-print(data)
+#grab username and userrank from data list
 user_list = []
 temp_list = []
 rank_list = []
@@ -40,22 +40,7 @@ for i in range(len(data)):
     temp_list.append(i)
     rank_list.append(float(data[i]['rank']))
 
-######################
-# in plotly the barchart show as
-'''data = [go.Bar(
-    x=user_list,  # NOC stands for National Olympic Committee
-    y=rank_list
-)]
-layout = go.Layout(
-    title='Java User Page Rank Rating top 15'
-)
-fig = go.Figure(data=data, layout=layout)
-pyo.plot(fig, filename='PageRank_Java.html')
-children = [
-                      html.H2(children = "Git-Influencer"),
-                      html.Div(children = "Catherine Shen")
-                      host='0.0.0.0', port=8080'''
-#######################
+#create graph object
 app.layout = html.Div([dcc.Graph(id='JavaPageRank',
                                  figure = {'data':[go.Bar(
                                                    x=user_list,  # NOC stands for National Olympic Committee
