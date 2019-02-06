@@ -1,2 +1,2 @@
-pandas=
-pyspark=
+pandas==0.17.1
+pyspark==2.3.1
