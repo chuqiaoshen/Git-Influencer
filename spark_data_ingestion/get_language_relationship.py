@@ -9,6 +9,7 @@ import time
 import re
 
 hdfs_location = 'hdfs://ec2-52-33-137-78.us-west-2.compute.amazonaws.com:9000'
+hdfs_readin_location = '{}/data_download/'.format(hdfs_location)
 #location of files on hdfs for output of user language relationship
 hdfs_language_location = '{}/language_data_cleaned/'.format(hdfs_location)
 
@@ -44,20 +45,20 @@ def classify_file(s):
 spark = SparkSession.builder.appName("gitLanguage").getOrCreate()
 
 #read json file from folder on hdfs with the latest unzipped json files.
-df = spark.read.json('specify the location of the /*.json')
+df = spark.read.json(hdfs_readin_location+'*.json')
 
 #slice out the events with CommitCommentEvent eventype
 df_comment = df[df.type.isin('CommitCommentEvent')]
 
-#create column path with all path of the CommitCommentEvent
-df_path = df_comment.withColumn('path',df_comment['payload']['comment']['path'])
+#create column path with all path of the CommitCommentEvent and username extracted
+df_path = df_comment.withColumn('path',df_comment['payload']['comment']['path']).withColumn('username',df_comment['actor']['login'])
 #use udf to construct the classify_file function for language matching
 matchLanguage = udf(classify_file, StringType())
 #create column language with all the language classified and only select username and path columns
-df_language = df_path.withColumn('language',matchLanguage('path')).select('username','path')
+df_language = df_path.withColumn('language',matchLanguage('path')).select('username','language')
 #drop file with none in language
 df_language_relationship = df_language.na.drop()
 #the output file name will be in format of '19-02-05-18-05.csv'
-outputfilename = datetime.datetime.now().strftime("%y-%m-%d-%H-%M") + '.csv'
+outputfoldername = datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
 #write to hdfs
-df_language_relationship.write.csv(hdfs_language_location + outputfilename)'''
+df_language_relationship.write.csv(hdfs_language_location + outputfilename)
