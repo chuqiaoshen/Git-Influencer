@@ -10,6 +10,7 @@ import plotly.graph_objs as go
 import pandas as pd
 import pymysql
 import pymysql.cursors
+import base64
 
 # initial dash app
 app = dash.Dash()
@@ -40,16 +41,83 @@ for i in range(len(data)):
     temp_list.append(i)
     rank_list.append(float(data[i]['rank']))
 
+#store color object
+colors = {
+    'background': '#111111',
+    'text': '#003399'
+}
+
 #create graph object
-app.layout = html.Div([dcc.Graph(id='user_age_rank_bubble_plot',
+app.layout = html.Div(children =
+    [
+     html.H1(
+        children='Git Influencer',
+        style={
+            'textAlign': 'center',
+            'color': colors['text']
+        }
+    ),
+
+    html.H3(
+        children='Help you find people to follow on github for your interest language. ',
+        style={
+            'textAlign': 'center',
+            'color': colors['text']
+        }
+    ),
+    html.Label('Select your interest Language'),
+    dcc.Dropdown(
+        options=[
+            {'label': 'JavaScript', 'value': 'JavaScript'},
+            {'label': 'Python', 'value': 'Python'},
+            {'label': 'Java', 'value': 'Java'},
+        ],
+        value=['MTL', 'SF']
+
+    ),
+    dcc.Graph(id='user_age_rank_bubble_plot',
                                  figure = {'data':[go.Bar(
                                                    x=user_list,
-                                                   y=rank_list
+                                                   y=rank_list,
+                                                   opacity=0.7
                                                               )],
                                            'layout':go.Layout(
-                                title='Java User Page Rank Rating top 15',
-                                xaxis = {'title':'User Github Age'})}
-                                )])
+                                title='User to follow based on pagerank score',
+                                xaxis = {'title':'User Github ID'},
+                                margin={'l': 100, 'b': 40, 't': 40, 'r': 100},
+                                legend={'x': 0, 'y': 1},
+                                hovermode='closest')}
+                                ),
+    html.Label('Multi-Select Dropdown'),
+    dcc.Dropdown(
+            options=[
+                {'label': 'San Francisco', 'value': 'JavaScript'},
+                {'label': 'New York', 'value': 'Python'},
+                {'label': 'Seattle', 'value': 'Java'},
+            ],
+            value=['MTL', 'SF'],
+            multi=True
+        ),
+
+    dcc.Graph(id='JavaPageRank',
+                                     figure = {'data':[go.Scatterpolar(
+                                                         r = [8, 3.4, 5],
+                                                         theta = ['Github Age','Page Rank Score','Followers Number'],
+                                                         fill = 'toself'
+                                     )],
+                                               'layout':go.Layout(
+                                                        polar = dict(
+                                                        radialaxis = dict(
+                                                        visible = True,
+                                                        range = [0, 10]
+                                                   )
+                                                 ),
+                                                 showlegend = False
+                                               )}
+                                    )
+                                    ]
+                )
+
 
 
 if __name__ == '__main__':
