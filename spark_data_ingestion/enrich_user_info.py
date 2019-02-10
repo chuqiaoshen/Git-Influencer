@@ -12,6 +12,7 @@ from github3 import login
 from datetime import date
 import pymysql.cursors
 
+
 def get_user_details(gh, userid):
     '''
     import userid get the userpublic info via github3
@@ -41,7 +42,6 @@ def get_user_details(gh, userid):
     return userid, user_type, github_age, followers_num, following_num, repo_num, gist_num, location, company
 
 
-# use user_input to get the full information
 def get_all_details(user_input,gh):
     '''
     input user_input(list): a list of github username (list)
@@ -57,6 +57,7 @@ def get_all_details(user_input,gh):
             #skip the users who no longer has this github account
             print('{} not found'.format(userid))
     return user_details_list
+
 
 def save_to_dataframe(user_details_list):
     '''
@@ -101,7 +102,6 @@ def save_to_dataframe(user_details_list):
             'company':company_list
             }
             dataframe = pd.DataFrame(user_data)
-
     return dataframe
 
 
