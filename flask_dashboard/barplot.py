@@ -30,7 +30,7 @@ connection = pymysql.connect(host = mysql_host,
 
 cursor = connection.cursor()
 #select top 15 users by their pange rank rating
-cursor.execute("SELECT user,rank FROM user_rank ORDER BY rank DESC LIMIT 15")
+cursor.execute("SELECT user,rank FROM user_rank ORDER BY rank DESC LIMIT 20")
 data = cursor.fetchall()
 #grab username and userrank from data list
 user_list = []
@@ -48,7 +48,9 @@ colors = {
 }
 
 #create graph object
-app.layout = html.Div(children =
+app.layout = html.Div([
+
+html.Div(children =
     [
      html.H1(
         children='Git Influencer',
@@ -82,6 +84,13 @@ app.layout = html.Div(children =
                                                    opacity=0.7
                                                               )],
                                            'layout':go.Layout(
+                                images=[dict(
+        source="https://storage.googleapis.com/pics-insight/pagerankcats.png",
+        xref="paper", yref="paper",
+        x=1, y=1.05,
+        sizex=0.5, sizey=0.5,
+        xanchor="right", yanchor="bottom"
+      )],
                                 title='User to follow based on pagerank score',
                                 xaxis = {'title':'User Github ID'},
                                 margin={'l': 100, 'b': 40, 't': 40, 'r': 100},
@@ -97,9 +106,11 @@ app.layout = html.Div(children =
             ],
             value=['MTL', 'SF'],
             multi=True
-        ),
+        )]),
 
-    dcc.Graph(id='JavaPageRank',
+
+    html.Div([
+              html.Div([dcc.Graph(id='JavaPageRank',
                                      figure = {'data':[go.Scatterpolar(
                                                          r = [8, 3.4, 5],
                                                          theta = ['Github Age','Page Rank Score','Followers Number'],
@@ -115,8 +126,14 @@ app.layout = html.Div(children =
                                                  showlegend = False
                                                )}
                                     )
-                                    ]
-                )
+                                    ]),
+
+            html.Div([
+                html.Iframe(src = 'https://storage.googleapis.com/pics-insight/ironman-cats.png', height = 500, width = 500)
+            ])
+                ])
+
+                ])
 
 
 
