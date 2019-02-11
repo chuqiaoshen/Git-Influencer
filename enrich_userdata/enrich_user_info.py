@@ -121,26 +121,49 @@ if __name__ == "__main__":
     inputfile_names = ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','Python','Ruby','Shell', 'Scala']
     #loop over and send into the github3 api for user info enrichment
     for inputfile_name in inputfile_names:
-        #construct the fullpath of inputfiles and outputfiles folder
-        inputfile_fullpath  = inputfile_location + inputfile_name + '.csv'
-        outputfile_fullpath =  outputfile_location +'userdetail_' + inputfile_name + '.csv'
-        #readin the user_rank csv
-        df = pd.read_csv(inputfile_fullpath, usecols=['user','rank'])
-        #sort dataframe by the pagerank values
-        df_sorted = df.sort_values(by=['rank'], ascending = False)
-        #grab the top N user based on pagerank score
-        user_input = df_sorted.user.tolist()[:topN]
-        #get a list of user details by github3 api
-        user_details_list = get_all_details(user_input, gh )
-        #save the user info list to pandas dataframe
-        dataframe = save_to_dataframe(user_details_list)
-        #construct the filter to filter out no user
-        is_user = dfObj['user_type'] == 'User'
-        #filter out pagerank 0 following trap
-        has_following = dfObj['user_following'] != 0
-        #filter users who has more than 300 followers
-        large_follow = dfObj['user_followers'] > 300
-        #final df output
-        df_final = dfObj[is_user & has_following & large_follow]
-        #save final csv output to the pull path
-        df_final.to_csv(outputfile_fullpath)
+        try:
+            #construct the fullpath of inputfiles and outputfiles folder
+            inputfile_fullpath  = inputfile_location + inputfile_name + '.csv'
+            outputfile_fullpath =  outputfile_location +'userdetail_' + inputfile_name + '.csv'
+            #readin the user_rank csv
+            df = pd.read_csv(inputfile_fullpath, usecols=['user','rank'])
+        except:
+            print('{} read in files error, please recheck the inputfilepath, make sure inclued '/' at the end'.format(inputfile_name))
+
+        try:
+            #sort dataframe by the pagerank values
+            df_sorted = df.sort_values(by=['rank'], ascending = False)
+            #grab the top N user based on pagerank score
+            user_input = df_sorted.user.tolist()[:topN]
+        except:
+            print('{} sort dataframe by rank error, please recheck the inputfile schema'.format(inputfile_name))
+
+        try:
+            #get a list of user details by github3 api
+            user_details_list = get_all_details(user_input, gh )
+        except:
+            print('{} get_all_details function error, please recheck the gh object ratelimit and user_input format'.format(inputfile_name))
+
+        try:
+            #save the user info list to pandas dataframe
+            dataframe = save_to_dataframe(user_details_list)
+        except:
+            print('{} save_to_dataframe function error,please recheck input user_details_list format'.format(inputfile_name))
+
+        try:
+            #construct the filter to filter out no user
+            is_user = dfObj['user_type'] == 'User'
+            #filter out pagerank 0 following trap
+            has_following = dfObj['user_following'] != 0
+            #filter users who has more than 300 followers
+            large_follow = dfObj['user_followers'] > 300
+        except:
+            print('{} filter dataframe error, please recheck the filter limits'.format(inputfile_name))
+
+        try:
+            #final df output
+            df_final = dfObj[is_user & has_following & large_follow]
+            #save final csv output to the pull path
+            df_final.to_csv(outputfile_fullpath)
+        except:
+            print('{} filter result save to csv error, please recheck the outputfile_path, make sure '/' at the end'.format(inputfile_name))
