@@ -1,5 +1,6 @@
 '''
 this python script is for creating table in mysql database
+#location and company info use VARCHAR 1000 in this script
 '''
 import os
 import pandas as pds
