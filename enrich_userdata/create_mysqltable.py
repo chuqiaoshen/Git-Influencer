@@ -11,7 +11,9 @@ mysql_host = os.environ['MYSQL_HOST']
 mysql_username = os.environ['MYSQL_USERNAME']
 mysql_password = os.environ['MYSQL_PASSWORD']
 
+
 if __name__ == "__main__":
+    table_list = ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','PHP','Python','Python','Ruby','Scala','Shell']
     #test mysql connectivity
     try:
         connection = pymysql.connect(host = mysql_host,
