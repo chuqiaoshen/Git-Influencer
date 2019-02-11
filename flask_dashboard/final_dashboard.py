@@ -10,6 +10,8 @@ import pandas as pd
 import pymysql
 import pymysql.cursors
 import os
+import flask
+from flask import jsonify
 
 #initial dash obj
 app = dash.Dash()
@@ -44,6 +46,7 @@ app.layout = html.Div([
                'textAlign': 'center'
            }
         ),
+
         html.Label(' Select your interest Language'),
         html.Div([
             dcc.Dropdown(
@@ -53,7 +56,8 @@ app.layout = html.Div([
             )
         ],
         style={'width': '30%', 'display': 'inline-block'}),
-        html.Label('  Select top N user'),
+
+        html.Label('  Select top number of users'),
         html.Div([
             dcc.Dropdown(
                 id='topN',
@@ -66,13 +70,42 @@ app.layout = html.Div([
         style={'color':'blue', 'padding':10, 'width':600}
     ),
 
-    dcc.Graph(id='barplot-pagerank')
+    dcc.Graph(id='barplot-pagerank'),
+    html.Div(
+    ' ',
+    style={'color':'blue', 'padding':10, 'width':600}
+),
+    html.Div(id = 'github-link'),
+
+    html.Div(
+    ' ',
+    style={'color':'blue', 'padding':10, 'width':1200}
+)
 ],
     style={
             'border': 'lightblue',
-    'padding':10})
+            'padding':20,
+            'width': '100%',
+            'float': 'left'})
 
-#call back function for updating the xaxis and yaxis
+#call back function for updating the external link of user's github page
+@app.callback(
+    Output('github-link', 'children'),
+    [Input('barplot-pagerank', 'hoverData')])
+def callback_githublink(hoverData):
+
+    githubusername = hoverData['points'][0]['text']
+    #print(githubusername)
+
+    redirect_url = 'https://github.com/'+ githubusername
+    markdown = '[_______________________________________Follow {} on github]({})'.format(githubusername,redirect_url)
+    #print('url',redirect_url )
+
+    obj = dcc.Markdown(children = markdown)
+    return obj
+
+
+#call back function for updating the barplot
 @app.callback(
     Output('barplot-pagerank', 'figure'),
     [Input('language', 'value'),
@@ -128,26 +161,3 @@ def update_graph( xaxis_name, yaxis_name):
 if __name__ == '__main__':
     app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
     app.run_server()
-
-'''
-dcc.Graph(id='user_age_rank_bubble_plot',
-                             figure = {'data':[go.Bar(
-                                               x=user_list,
-                                               y=rank_list,
-                                               opacity=0.7
-                                                          )],
-                                       'layout':go.Layout(
-                            images=[dict(
-    source="https://storage.googleapis.com/pics-insight/pagerankcats.png",
-    xref="paper", yref="paper",
-    x=1, y=1.05,
-    sizex=0.5, sizey=0.5,
-    xanchor="right", yanchor="bottom"
-  )],
-                            title='User to follow based on pagerank score',
-                            xaxis = {'title':'User Github ID'},
-                            margin={'l': 100, 'b': 40, 't': 40, 'r': 100},
-                            legend={'x': 0, 'y': 1},
-                            hovermode='closest')}
-                            ),
-'''
