@@ -10,8 +10,7 @@ import pandas as pd
 import pymysql
 import pymysql.cursors
 import os
-import flask
-from flask import jsonify
+
 
 #initial dash obj
 app = dash.Dash()
@@ -21,15 +20,52 @@ languages = ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','PHP','Python'
 #initial the app layout
 app.layout = html.Div([
 
+        html.Div(
+        ' ',
+        style={'color':'blue', 'padding':10, 'width':800}
+    ),
 
-        html.Img(src='https://storage.googleapis.com/pics-insight/pagerankcats.png',
+
+        html.Img(src='https://storage.googleapis.com/pics-insight/githubFamily.png',
                  style={
-                'maxWidth': '50%',
-                'maxHeight': '50%',
+                'maxWidth': '100%',
+                'maxHeight': '100%',
                 'marginLeft': 'auto',
                 'marginRight': 'auto'
             }
         ),
+        html.H4(
+           children= dcc.Markdown(children = '[Catherine Shen](https://www.linkedin.com/in/chuqiao-catherine-shen/)'),
+           style={
+               'textAlign': 'center',
+               'color': 'rgb(48,48,48)'
+           }
+        ),
+        html.H5(
+           children='Insight Data Engineering Project',
+           style={
+               'textAlign': 'center',
+               'color': 'rgb(48,48,48)'
+           }
+        ),
+
+        html.H6(
+           children= dcc.Markdown(children = '[GitInfluencer-Github](https://github.com/Catherinesdataanalytics), [GitInfluencer-PPT](https://github.com/Catherinesdataanalytics/Git-Influencer)'),
+           style={
+               'textAlign': 'center',
+               'color': 'rgb(48,48,48)'
+           }
+        ),
+
+        html.Img(src='https://storage.googleapis.com/pics-insight/blank.png',
+                 style={
+                'maxWidth': '80%',
+                'maxHeight': '40%',
+                'marginLeft': 'auto',
+                'marginRight': 'auto'
+            }
+        ),
+
 
         html.H1(
            children='Git Influencer',
@@ -41,7 +77,7 @@ app.layout = html.Div([
            }
         ),
         html.H3(
-           children='Help you find people to follow on github for your interest language. ',
+           children='Help you find Github Influencers of your interest language. ',
            style={
                'textAlign': 'center'
            }
@@ -71,11 +107,19 @@ app.layout = html.Div([
     ),
 
     dcc.Graph(id='barplot-pagerank'),
+
     html.Div(
     ' ',
     style={'color':'blue', 'padding':10, 'width':600}
 ),
-    html.Div(id = 'github-link'),
+    #html.Div(id = 'github-link'),
+    html.H6(id = 'github-link',
+       children= 'Select language to see influencers',
+       style={
+           'textAlign': 'center',
+           'color': 'rgb(48,48,48)'
+       }
+    ),
 
     html.Div(
     ' ',
@@ -98,7 +142,7 @@ def callback_githublink(hoverData):
     #print(githubusername)
 
     redirect_url = 'https://github.com/'+ githubusername
-    markdown = '[_______________________________________Follow {} on github]({})'.format(githubusername,redirect_url)
+    markdown = '[Follow {} on github]({})'.format(githubusername,redirect_url)
     #print('url',redirect_url )
 
     obj = dcc.Markdown(children = markdown)
