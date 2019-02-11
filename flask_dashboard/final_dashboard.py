@@ -19,22 +19,31 @@ languages = ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','PHP','Python'
 #initial the app layout
 app.layout = html.Div([
 
+
+        html.Img(src='https://storage.googleapis.com/pics-insight/pagerankcats.png',
+                 style={
+                'maxWidth': '50%',
+                'maxHeight': '50%',
+                'marginLeft': 'auto',
+                'marginRight': 'auto'
+            }
+        ),
+
         html.H1(
            children='Git Influencer',
            style={
                'textAlign': 'center',
-               'color': '#003399'
+               #'background':'rgb(240,255,255)',
+               'color': 'Black'
+               #'background': 'darkblue'
            }
         ),
-
         html.H3(
            children='Help you find people to follow on github for your interest language. ',
            style={
-               'textAlign': 'center',
-               'color': '#003399'
+               'textAlign': 'center'
            }
         ),
-
         html.Label(' Select your interest Language'),
         html.Div([
             dcc.Dropdown(
@@ -44,7 +53,6 @@ app.layout = html.Div([
             )
         ],
         style={'width': '30%', 'display': 'inline-block'}),
-
         html.Label('  Select top N user'),
         html.Div([
             dcc.Dropdown(
@@ -53,14 +61,16 @@ app.layout = html.Div([
                 value='Select the top user number'
             )
         ],style={'width': '38%', 'display': 'inline-block'}),
-
         html.Div(
-        'This is an inner Div',
+        ' ',
         style={'color':'blue', 'padding':10, 'width':600}
     ),
 
     dcc.Graph(id='barplot-pagerank')
-], style={'padding':10})
+],
+    style={
+            'border': 'lightblue',
+    'padding':10})
 
 #call back function for updating the xaxis and yaxis
 @app.callback(
@@ -103,17 +113,20 @@ def update_graph( xaxis_name, yaxis_name):
 
         )],
         'layout': go.Layout(
-            title='User to follow based on pagerank score',
+            title='{} User to follow based on pagerank score'.format(xaxis_name),
             xaxis={'title': 'Github Username'},
             yaxis={'title': 'Normalized Pagerank'},
             margin={'l': 60, 'b': 40, 't': 50, 'r': 60},
             legend={'x': 0, 'y': 1},
-            hovermode='closest'
+            hovermode='closest',
+            paper_bgcolor='rgb(173,216,230)',
+            plot_bgcolor='rgb(240,248,255)'
+
         )
     }
 
 if __name__ == '__main__':
-
+    app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
     app.run_server()
 
 '''
