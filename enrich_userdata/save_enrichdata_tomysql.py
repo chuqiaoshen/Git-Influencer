@@ -10,12 +10,16 @@ import pandas as pd
 #CHANGE BELOW
 inputfilepath  = 'the location of enriched userdetail_{}.csv files '
 #CHANGE ABOVE
+#echo environment variables from instances for mysql login
+mysql_host = os.environ['MYSQL_HOST']
+mysql_username = os.environ['MYSQL_USERNAME']
+mysql_password = os.environ['MYSQL_PASSWORD']
 
 if __name__ == "__main__":
     # Connect to the mysql database
-    connection = pymysql.connect(host='34.208.137.201',
-                                 user = 'cat',
-                                 password = '1111',
+    connection = pymysql.connect(host= mysql_host,
+                                 user = mysql_username,
+                                 password = mysql_password,
                                  db = 'detail',
                                  charset = 'utf8mb4',
                                  cursorclass = pymysql.cursors.DictCursor)
