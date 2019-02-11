@@ -7,7 +7,7 @@ Started from 2008, Github is now one of the most popular open source community i
 
 Github is also one of the best sources for learning coding, we share code, publish new project, follow and learn from other users. But github do not have a system to help you find the right person and resources on specific area.
 
-**Everyone wants to learn from the best, this project aims to creat a platform which can help you on finding the social influencer from the github network.**
+**Everyone wants to learn from the best, this project aims to creat a platform which can help you on finding the social influencers from the github network.**
 
 ## Data Source
 * [Github archive](https://www.gharchive.org/) : GH Archive is a project to record the public GitHub timeline, which stores all the event based github. Weighing in over **3TB** total, this is the largest Bigquery dataset available on kaggle.
@@ -19,7 +19,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V4.png)
 
 * **Data Ingestion**
-   - Raw data stored in github Archive, it will be downloaded with python and be transferred to HDFS.
+   - Raw data stored in github Archive, it is scheduled to be downloaded with python and Airflow and transferred to HDFS.
    - New coming data cleaning: use github Archive api and airflow scheduler to clean the updated new coming data and append to historical data in HDFS.
    - HDFS: All data will be stored to HDFS for data processing in spark.
 
