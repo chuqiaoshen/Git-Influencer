@@ -204,4 +204,4 @@ def update_graph( xaxis_name, yaxis_name):
 
 if __name__ == '__main__':
     app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
-    app.run_server()
+    app.run_server(debug = True, host = '0,0,0,0')
