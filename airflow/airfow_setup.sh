@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#this is a bash file for setting up airflow on ubuntu
 
 ###get pip3
 sudo apt install python3-pip
