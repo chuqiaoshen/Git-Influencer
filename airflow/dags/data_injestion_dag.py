@@ -1,3 +1,11 @@
+
+'''
+Data Injestion Pipeline
+This airflow data pipeline is for :
+1) downloading raw data from github archive to HDFS
+2) clean data in HDFS and save cleaned data back to hdfs
+3) remove the raw data in HDFS
+'''
 # import airflow packages
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
@@ -63,6 +71,4 @@ spark_job = BashOperator(
   dag = dag)
 
 # setting dependencies
-archive_hdfs >> clean
-clean >> cleandata_hdfs
-cleandata_hdfs >> spark_job
+archive_hdfs >> clean >> cleandata_hdfs >> spark_job
