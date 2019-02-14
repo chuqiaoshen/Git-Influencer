@@ -1,16 +1,20 @@
 #!/bin/bash
 
-# This script download .json.gz file from github archive on hourly basis and move the unziped json file to HDFS
+# This script is for download .json.gz file from github archive on hourly basis and move the unziped json file to HDFS
 
-# Download gz file to masternode
-## TODO: this will change with the time of day
-# wget http://data.gharchive.org/2015-01-01-{0..23}.json.gz
+#download archive data using python
+python /home/ubuntu/data_injestion/download_archive.py
 
-# Unzip the file
+cd /home/ubuntu/download_archive
+# Unzip the archive data
 gunzip -k *.gz
 
-# Move the json file to HDFS
-hadoop fs -mkdir /testdata
-hadoop fs -put *.json /testdata
+# Move the unzipped json file to HDFS
+hadoop fs -mkdir /raw_data
+hadoop fs -put *.json /raw_data
+
+#remove files after unziped
+rm -f *.gz
+rm -f *.json
 
 # End of this script
