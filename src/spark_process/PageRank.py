@@ -6,7 +6,7 @@ Catherine Shen 20190126
 PageRank implement by pyspark (sparksession version)
 Input Format: csv with a,b in each line
 Run:
-python PageRank.py filename.csv numberforiteration(recommmend 10)
+python PageRank.py filename.csv numberforiteration(recommmend 50)
 #this version will write and save results to csvs
 """
 #import library
