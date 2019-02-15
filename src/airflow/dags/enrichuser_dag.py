@@ -26,16 +26,16 @@ dag = DAG(
   default_args=default_args)
 
 #enrich data from githubapi
-t1 = BashOperator(
+fetch_usersdata = BashOperator(
     task_id='fetch_usersdata',
     bash_command='python3 /home/ubuntu/airflow/airflow/dags/scripts/enrich_user_info.py',
     dag=dag)
 
 #save enriched data to mysqldb
-t2 = BashOperator(
+save_to_mysql = BashOperator(
     task_id='save_to_mysql',
     bash_command='python3 /home/ubuntu/airflow/airflow/dags/scripts/save_enrichdata_tomysql.py',
     dag=dag)
 
 #dependency
-t1 >> t2
+fetch_usersdata >> save_to_mysql
