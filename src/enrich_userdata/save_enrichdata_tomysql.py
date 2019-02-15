@@ -10,6 +10,7 @@ import pandas as pd
 #CHANGE BELOW
 inputfilepath  = 'the location of enriched userdetail_{}.csv files '
 #CHANGE ABOVE
+
 #echo environment variables from instances for mysql login
 mysql_host = os.environ['MYSQL_HOST']
 mysql_username = os.environ['MYSQL_USERNAME']
@@ -24,7 +25,7 @@ if __name__ == "__main__":
                                  charset = 'utf8mb4',
                                  cursorclass = pymysql.cursors.DictCursor)
     print('mysql db connect sucess')
-
+    #iterate over the language list for inserting into tables
     for inputfilename in ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','Python','Ruby','Shell', 'Scala']:
 
         try:
@@ -34,6 +35,7 @@ if __name__ == "__main__":
             print('{} read in files error, please recheck the inputfilepath, make sure inclued '/' at the end'.format(inputfilename))
 
         try:
+            #use df.to_sql to save dataframes into mysql tables
             df.to_sql(name=filename,con = connection, if_exists = 'replace', index=False, flavor = 'mysql')
         except:
             print('{} save to mysql db error, make sure your input field match the mysql column type'.format(inputfilename))
