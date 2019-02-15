@@ -28,7 +28,7 @@ Github is also one of the best sources for learning coding, we share code, publi
    - PageRank and other network analysis algorithms in graphX
 
 * **Database**
-   - Mysql, with 10 table corresponding to 10 languages.
+   - Mysql, with 10 table corresponding to 10 languages user rank scores and user details.
 
 * **User Interface**
    - Dash, user can select the language and they will get recommended users ranking by the social influencer score.
