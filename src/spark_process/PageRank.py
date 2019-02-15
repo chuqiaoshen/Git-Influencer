@@ -2,12 +2,12 @@
 Catherine Shen
 '''
 """
-Catherine Shen 20190124
+Catherine Shen 20190126
 PageRank implement by pyspark (sparksession version)
 Input Format: csv with a,b in each line
 Run:
 python PageRank.py filename.csv numberforiteration(recommmend 10)
-#this version will write and save results to csvs 
+#this version will write and save results to csvs
 """
 #import library
 from __future__ import print_function
@@ -21,11 +21,6 @@ import pymysql
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import Row
-
-#here you are going to create a function
-
-#convert rdd to dataframe
-#reference to https://stackoverflow.com/questions/39699107/spark-rdd-to-dataframe-python
 
 def computeContribs(followers, rank):
     """Calculates follower contributions to the rank of other followers.
