@@ -53,3 +53,8 @@ Recommend community for colaboration.
 * Explore HDFS data storage efficiency - Parquet
 * Try different classification metric for discovering more user topics
 * Use more Graph analysis algorithms in GraphX
+
+## Dashboard and PPT
+[Git Influencer dashboard](http://bit.ly/Git-Influencer)
+[Project Slides](https://www.slideshare.net/CatherineShen10/git-influencer-catherine-shen)
+[Demo video](https://youtu.be/bOVR8one7pY)
