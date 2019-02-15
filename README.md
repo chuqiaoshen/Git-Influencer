@@ -19,13 +19,13 @@ Github is also one of the best sources for learning coding, we share code, publi
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V4.png)
 
 * **Data Ingestion**
-   - Raw data stored in github Archive, it is scheduled to be downloaded with python and Airflow and transferred to HDFS.
-   - New coming data cleaning: use github Archive api and airflow scheduler to clean the updated new coming data and append to historical data in HDFS.
-   - HDFS: All data will be stored to HDFS for data processing in spark.
+   - Historical data: Raw data stored in github Archive, it is scheduled to be downloaded with python and Airflow and saved to HDFS. 
+   - New coming data: use github Archive api and airflow scheduler to clean the updated new coming data and append to historical data in HDFS.
+   - HDFS: All data in HDFS will be cleaned with spark and saved for data processing in spark.
 
 * **Data Processing**
    - use spark for batch processing data on HDFS
-   - other network analysis algorithms in graphX
+   - PageRank and other network analysis algorithms in graphX
 
 * **Database**
    - Mysql, with 10 table corresponding to 10 languages.
@@ -34,31 +34,22 @@ Github is also one of the best sources for learning coding, we share code, publi
    - Dash, user can select the language and they will get recommended users ranking by the social influencer score.
 
 ## Engineering challenge
-* Data modeling: work on mapping user with languages from event data
-* Processing and cleaning 2.9TB github event data in json format, slice and find the right field. - lambda
-* 80~100 G per month, and update every 1 hour in bigquery. Use airflow auto the whole processing. - airflow
-* mysql connect and read from S3 using spark session
-* scala and graphX
+* Data modeling: find clues from raw json event data for mapping users with languages.
+* Data size and update: Processing and cleaning 2.9TB github event data, combining both historical data cleaning and new coming data cleaning: 80~100 G per month, and update every hour. Use airflow auto the whole processing. 
 
 ## Alogorithms
 * Centrality Measures: Pagerank
 * only people who used this language before has been included in the pagerank algorithms
 * Community Detection: Strongly Connected Components
-* GraphX and more analysis soon.
-<img src="https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/graphSpark.png " width="550">
+* GraphX and more analysis in the future.
 
 ## Business Value
 1. If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
-2. For example, Show the 10 or N people to learn from based on network analysis result.
+2. For example, Show N people to learn from based on network analysis result.
 Recommend community for colaboration.
 
-## Temporal output
-* show sample result of the github user. User list which has a high pagerank score.
-* show the pagerank score which are defined by the user language.
 
-
-## Further Questions
-* The way to make the whole process real time or not need
-* write test code
-* make data clean for deleted user and delete no following users
-* move to scala, test structure in scala
+## Further Improvement
+* Explore HDFS data storage efficiency - Parquet
+* Try different classification metric for discovering more user topics
+* Use more Graph analysis algorithms in GraphX
