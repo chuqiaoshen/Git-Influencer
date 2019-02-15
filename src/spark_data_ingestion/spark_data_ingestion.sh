@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script is for download .json.gz file from github archive on hourly basis and move the unziped json file to HDFS
+# This script is for testing the work flow of downloading .json.gz file from github archive on hourly basis and move the unziped json file to HDFS
 
 #download archive data using python
 python /home/ubuntu/data_injestion/download_archive.py

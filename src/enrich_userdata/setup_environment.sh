@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This is the bash file for enrich userdata from github API
+# This is the bash file for testing enrich userdata from github API and save to mysql database
 
 #before run this bashfile, make sure setup environment for your data processing
 #sudo apt install python3-pip
@@ -9,8 +9,9 @@
 #pip3 install -r requirements.txt
 
 #first get user enriched data from API
-python3 enrich_user_info.py
+#python3 enrich_user_info.py
+
 # store cleaned result into mysql
-python3 save_enrichdata_tomysql.py
+#python3 save_enrichdata_tomysql.py
 
 # END
