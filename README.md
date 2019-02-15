@@ -19,7 +19,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 ![Tech Stack](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/tech_flow_V4.png)
 
 * **Data Ingestion**
-   - Historical data: Raw data stored in github Archive, it is scheduled to be downloaded with python and Airflow and saved to HDFS. 
+   - Historical data: Raw data stored in github Archive, it is scheduled to be downloaded with python and Airflow and saved to HDFS.
    - New coming data: use github Archive api and airflow scheduler to clean the updated new coming data and append to historical data in HDFS.
    - HDFS: All data in HDFS will be cleaned with spark and saved for data processing in spark.
 
@@ -35,7 +35,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 
 ## Engineering challenge
 * Data modeling: find clues from raw json event data for mapping users with languages.
-* Data size and update: Processing and cleaning 2.9TB github event data, combining both historical data cleaning and new coming data cleaning: 80~100 G per month, and update every hour. Use airflow auto the whole processing. 
+* Data size and update: Processing and cleaning 2.9TB github event data, combining both historical data cleaning and new coming data cleaning: 80~100 G per month, and update every hour. Use airflow auto the whole processing.
 
 ## Alogorithms
 * Centrality Measures: Pagerank
@@ -47,6 +47,7 @@ Github is also one of the best sources for learning coding, we share code, publi
 1. If you want to learn "Golang" or other languages, this platform will recommend you the most valueble github user to follow and learn from based on network analysis results.
 2. For example, Show N people to learn from based on network analysis result.
 Recommend community for colaboration.
+![Dashboard](https://raw.githubusercontent.com/catherinesdataanalytics/LearnFromBest/master/pics/dashboard_screenshot.png)
 
 
 ## Further Improvement
