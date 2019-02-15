@@ -1,10 +1,13 @@
+'''
+Catherine Shen
+'''
 """
 Catherine Shen 20190124
 PageRank implement by pyspark (sparksession version)
 Input Format: csv with a,b in each line
 Run:
 python PageRank.py filename.csv numberforiteration(recommmend 10)
-#this version will write into mysql database
+#this version will write and save results to csvs 
 """
 #import library
 from __future__ import print_function
@@ -87,18 +90,7 @@ if __name__ == "__main__":
 
     df = pd.DataFrame(ranks.collect(),
               columns=['user','rank'])
-    df.to_csv("sample_file3.csv", header=True)
-    #get the pandas df stored into db
-    df.to_sql(con=con, name='table_name_for_df', if_exists='replace', flavor='mysql')
-
-    #get the sparkdf stored into db
-    '''
-    df.write.format('jdbc').options(
-    url='jdbc:mysql://localhost/database_name',
-    driver='com.mysql.jdbc.Driver',
-    dbtable='DestinationTableName',
-    user='your_user_name',
-    password='your_password').mode('append').save()'''
-
+    outputfilename = (sys.argv[1]).split('/')[-1]
+    df.to_csv(outputfilename, header=True)
 
     spark.stop()

@@ -17,4 +17,13 @@ hadoop fs -put *.json /raw_data
 rm -f *.gz
 rm -f *.json
 
-# End of this script
+#get the follow relationship from download github archive data
+spark-submit get_follow_relationship.py
+
+#get the language relationship from download github archive data
+spark-submit get_language_relationship.py
+
+#delete the raw data (only use for history data cleaning part)
+#hadoop fs -rm  *.json /raw_data
+
+# End

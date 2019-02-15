@@ -1,5 +1,4 @@
 #this is the python script for generating download links hourly from github archive open datasets
-#the output file
 
 import os
 from datetime import datetime

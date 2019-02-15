@@ -10,22 +10,49 @@ hdfs_readin_location = '{}/data_download/'.format(hdfs_location)
 #location of files on hdfs for output of user follow relationship
 hdfs_follow_location = '{}/follow_data_cleaned/'.format(hdfs_location)
 
-#TODO modular this
-spark = SparkSession.builder.appName("GetFollow").getOrCreate()
+if __name__ == "__main__":
 
-#read json file from data_download folder on hdfs with the latest unzipped json files.
-df = spark.read.json("{}*.json".format(hdfs_readin_location))
+    try:
+        spark = SparkSession.builder.appName("GetFollow").getOrCreate()
+    except:
+        print('SparkSession start failed')
 
-#slice out the event type with FollowEvent          #create new column user_follow and user_followed
-df_follow_event = df[df.type.isin('FollowEvent')]
+    try:
+        #read json file from data_download folder on hdfs with the latest unzipped json files.
+        df = spark.read.json("{}*.json".format(hdfs_readin_location))
+    except:
 
-df_follow = df_follow_event.withColumn('user_follow',df_follow_event['actor']['login']).withColumn('user_followed',df_follow_event['payload']['target']['login'])
+        print('Spark readin json failed, check hdfs_readin_location')
+        print('current readin location is {}'.format(hdfs_readin_location))
 
-#select the user_follow and user_followed columns for saving
-df_follow_relationship = df_follow.select('user_follow','user_followed')
+        #slice out the event type with FollowEvent          #create new column user_follow and user_followed
+    try:
+        df_follow_event = df[df.type.isin('FollowEvent')]
+    except:
+        print('failed to slice out FollowEvent')
 
-#the output file name will be in folder of '19-02-05-18-05'
-outputfilename = datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
+    try:
+        df_follow = df_follow_event.withColumn('user_follow',df_follow_event['actor']['login']).withColumn('user_followed',df_follow_event['payload']['target']['login'])
+    except:
+        print('')
 
-#save result to hdfs in csv format for further spark processing
-df_follow_relationship.write.csv(hdfs_follow_location + outputfilename)
+    try:
+        #select the user_follow and user_followed columns for saving
+        df_follow_relationship = df_follow.select('user_follow','user_followed')
+    except:
+        print('failed to select user follow relationship')
+
+    try:
+        #the output file name will be in folder of '19-02-05-18-05'
+        outputfilename = datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
+
+        #save result to hdfs in csv format for further spark processing
+        df_follow_relationship.write.csv(hdfs_follow_location + outputfilename)
+    except:
+        print('data save to hdfs failed, check output directory name')
+        print('current save location is {}'.format(hdfs_follow_location + outputfilename))
+
+    try:
+        spark.stop()
+    except :
+        print("failed to stop spark")

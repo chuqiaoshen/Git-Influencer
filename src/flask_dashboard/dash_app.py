@@ -14,6 +14,7 @@ import os
 
 #initial dash obj
 app = dash.Dash()
+server = app.server
 
 #lanugages and tables are all named like this list
 languages = ['C','Cplus','Csharp','Go','Java','JavaScript','Perl','PHP','Python','Python','Ruby','Scala','Shell']
